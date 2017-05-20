@@ -1,0 +1,9 @@
+C:\Users\Administrator\Documents\TinyPainter\TinyPainter\bin\Debug\TinyPainter.exe.config
+C:\Users\Administrator\Documents\TinyPainter\TinyPainter\bin\Debug\TinyPainter.exe
+C:\Users\Administrator\Documents\TinyPainter\TinyPainter\bin\Debug\TinyPainter.pdb
+C:\Users\Administrator\Documents\TinyPainter\TinyPainter\obj\Debug\TinyPainter.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\TinyPainter\TinyPainter\obj\Debug\TinyPainter.mainPainter.resources
+C:\Users\Administrator\Documents\TinyPainter\TinyPainter\obj\Debug\TinyPainter.Properties.Resources.resources
+C:\Users\Administrator\Documents\TinyPainter\TinyPainter\obj\Debug\TinyPainter.csproj.GenerateResource.Cache
+C:\Users\Administrator\Documents\TinyPainter\TinyPainter\obj\Debug\TinyPainter.exe
+C:\Users\Administrator\Documents\TinyPainter\TinyPainter\obj\Debug\TinyPainter.pdb
