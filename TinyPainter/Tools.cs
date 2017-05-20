@@ -63,7 +63,7 @@ namespace TinyPainter
         public Rectangle getRectangle(Point endPoint)
         {
             return new Rectangle(Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y),
-                Math.Abs(startPoint.X - endPoint.Y), Math.Abs(startPoint.Y - endPoint.Y));
+                Math.Abs(startPoint.X - endPoint.X), Math.Abs(startPoint.Y - endPoint.Y));
         }
     }
 }

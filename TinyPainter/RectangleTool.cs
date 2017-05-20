@@ -30,12 +30,13 @@ namespace TinyPainter
             return;
         }
 
+        // Draw a rectangle with given width and color
         public override void MouseDown(object sender, MouseEventArgs e)
         {
             if(e.Button == MouseButtons.Left)
             {
                 isDrawing = true;
-                DrawingPen = new Pen(settings.PrimaryColor, (float)settings.Width);
+                DrawingPen = new Pen(settings.PrimaryColor, settings.Width);
                 startPoint = new Point(e.Location.X, e.Location.Y);
                 g = Graphics.FromImage(swapgraphics);
             }

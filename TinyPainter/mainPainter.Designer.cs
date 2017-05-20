@@ -62,6 +62,7 @@ namespace TinyPainter
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.CurStates = new System.Windows.Forms.ToolStripStatusLabel();
             this.cursorPos = new System.Windows.Forms.ToolStripStatusLabel();
+            this.curstate = new System.Windows.Forms.ToolStripStatusLabel();
             this.operatebox = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.Arrow = new System.Windows.Forms.ToolStripButton();
@@ -73,7 +74,6 @@ namespace TinyPainter
             this.Eclipse = new System.Windows.Forms.ToolStripButton();
             this.Rectangle = new System.Windows.Forms.ToolStripButton();
             this.Text = new System.Windows.Forms.ToolStripButton();
-            this.curstate = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.colors = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
@@ -223,6 +223,11 @@ namespace TinyPainter
             this.cursorPos.Text = "toolStripStatusLabel1";
             this.cursorPos.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pos_display);
             // 
+            // curstate
+            // 
+            this.curstate.Name = "curstate";
+            this.curstate.Size = new System.Drawing.Size(0, 17);
+            // 
             // operatebox
             // 
             this.operatebox.BackColor = System.Drawing.SystemColors.Window;
@@ -232,6 +237,7 @@ namespace TinyPainter
             this.operatebox.Size = new System.Drawing.Size(380, 240);
             this.operatebox.TabIndex = 3;
             this.operatebox.TabStop = false;
+            this.operatebox.Paint += new System.Windows.Forms.PaintEventHandler(this.paintOnBox);
             // 
             // toolStrip1
             // 
@@ -330,11 +336,6 @@ namespace TinyPainter
             this.Text.Name = "Text";
             this.Text.Size = new System.Drawing.Size(23, 22);
             this.Text.Text = "Text";
-            // 
-            // curstate
-            // 
-            this.curstate.Name = "curstate";
-            this.curstate.Size = new System.Drawing.Size(0, 17);
             // 
             // toolStripSeparator3
             // 

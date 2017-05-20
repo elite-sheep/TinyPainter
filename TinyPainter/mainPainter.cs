@@ -31,7 +31,7 @@ namespace TinyPainter
         protected void InitOthers()
         {
             cursettings = new PaintSettings();
-            operatormap = new ImageFile(600, 450, Color.Black);
+            operatormap = new ImageFile(600, 450, Color.White);
             curTools = new ArrowTool(cursettings,operatormap.Bitmap,operatebox);
             curbutton = Arrow;
             curstate.Image = curbutton.Image;
@@ -156,6 +156,16 @@ namespace TinyPainter
 
             operatebox.ClientSize = operatormap.Bitmap.Size;
             operatebox.Invalidate();
+        }
+
+        //used to paint it on the picture box
+        protected void paintOnBox(object sender, PaintEventArgs e)
+        {
+            Rectangle rec = e.ClipRectangle;
+            Bitmap tmp = this.operatormap.Bitmap.Clone(rec, operatormap.Bitmap.PixelFormat);
+            e.Graphics.DrawImageUnscaledAndClipped(tmp, rec);
+            tmp.Dispose();
+            return;
         }
     }
 }

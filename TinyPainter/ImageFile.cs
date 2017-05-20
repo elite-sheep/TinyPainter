@@ -24,7 +24,7 @@ namespace TinyPainter
         public ImageFile(int width,int height,Color backcolor)
         {
             filename = "Untitled";
-            bitmap = new Bitmap(width, height);
+            bitmap = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format32bppRgb);
             Graphics g = Graphics.FromImage(bitmap);
             g.Clear(backcolor);
             g.Dispose();
