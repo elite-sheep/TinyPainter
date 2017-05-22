@@ -46,17 +46,19 @@ namespace TinyPainter
         public override void MouseUp(object sender, MouseEventArgs e)
         {
             if (isDrawing)
-            {
-                //delete old rectangle
-                swapgraphics = maingraphics;
-                endPoint = new Point(e.Location.X, e.Location.Y);
-                g.DrawRectangle(DrawingPen, getRectangle(endPoint));
+            { 
+                
                 this.operatorBox.Invalidate();
                 // save the objects we have drawn
-                maingraphics = swapgraphics;
+                updateMaingraph();
 
-                DrawingPen.Dispose();
                 isDrawing = false;
+
+                if(DrawingPen != null)
+                    DrawingPen.Dispose();
+
+                if(g != null)
+                    g.Dispose();
             }
             return;
         }
@@ -67,8 +69,11 @@ namespace TinyPainter
             if (isDrawing)
             {
                 endPoint = new Point(e.Location.X, e.Location.Y);
-                swapgraphics = maingraphics;
+                flushSwap();
+                g = Graphics.FromImage(swapgraphics);
+
                 g.DrawRectangle(DrawingPen, getRectangle(endPoint));
+
                 this.operatorBox.Invalidate();
             }
             return;

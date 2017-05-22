@@ -162,8 +162,9 @@ namespace TinyPainter
         protected void paintOnBox(object sender, PaintEventArgs e)
         {
             Rectangle rec = e.ClipRectangle;
-            Bitmap tmp = this.operatormap.Bitmap.Clone(rec, operatormap.Bitmap.PixelFormat);
-            e.Graphics.DrawImageUnscaledAndClipped(tmp, rec);
+            if (curTools.swapgraphics == null) Console.WriteLine("AAA");
+            Bitmap tmp = curTools.swapgraphics.Clone(rec, curTools.swapgraphics.PixelFormat);
+            e.Graphics.DrawImageUnscaledAndClipped(tmp,rec);
             tmp.Dispose();
             return;
         }

@@ -20,7 +20,7 @@ namespace TinyPainter
     {
         protected PaintSettings settings;
         protected Bitmap maingraphics;
-        protected Bitmap swapgraphics;
+        public Bitmap swapgraphics;
         protected PictureBox operatorBox;
         protected Graphics g;
         protected Point startPoint;
@@ -30,7 +30,7 @@ namespace TinyPainter
             this.settings = setting;
             this.maingraphics = map;
             this.operatorBox = newbox;
-            this.swapgraphics = maingraphics;
+            this.flushSwap();
 
             //add these event handlers to the view
             operatorBox.Cursor = Cursors.Cross;
@@ -64,6 +64,23 @@ namespace TinyPainter
         {
             return new Rectangle(Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y),
                 Math.Abs(startPoint.X - endPoint.X), Math.Abs(startPoint.Y - endPoint.Y));
+        }
+
+        public void flushSwap()
+        {
+         //   if(swapgraphics != null)
+           //     swapgraphics.Dispose();
+            //swapgraphics = maingraphics;
+            //Console.WriteLine(swapgraphics);
+            swapgraphics = (Bitmap)maingraphics.Clone();
+            //Console.Write(swapgraphics.PixelFormat);
+        }
+
+        public void updateMaingraph()
+        {
+            maingraphics = (Bitmap)swapgraphics.Clone();
+            //maingraphics = swapgraphics;
+            //maingraphics = (Bitmap)maingraphics.Clone();
         }
     }
 }
