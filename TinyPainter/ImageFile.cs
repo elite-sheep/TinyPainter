@@ -31,6 +31,12 @@ namespace TinyPainter
             return;
         }
 
+        public ImageFile(ImageFile mirror)
+        {
+            this.filename = mirror.filename;
+            this.bitmap = (Bitmap)mirror.bitmap.Clone();
+        }
+
         //properties used to read the file name
         // and the actual picture.
         public string FileName
@@ -46,6 +52,10 @@ namespace TinyPainter
             get
             {
                 return this.bitmap;
+            }
+            set
+            {
+                this.bitmap = value;
             }
         }
 
@@ -77,6 +87,11 @@ namespace TinyPainter
             {
                 return false;
             }
+        }
+
+        public ImageFile CloneImage()
+        {
+            return new ImageFile(this);
         }
     }
 }

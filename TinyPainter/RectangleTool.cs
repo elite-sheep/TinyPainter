@@ -23,12 +23,14 @@ namespace TinyPainter
         private Pen DrawingPen;
         private Point endPoint;
 
-        public RectangleTool(PaintSettings setting, Bitmap map, PictureBox operatorBox)
+        public RectangleTool(PaintSettings setting, ImageFile map, PictureBox operatorBox)
             : base(setting, map, operatorBox)
         {
             this.isDrawing = false;
+            this.endPoint = new Point();
             return;
         }
+
 
         // Draw a rectangle with given width and color
         public override void MouseDown(object sender, MouseEventArgs e)
@@ -38,7 +40,7 @@ namespace TinyPainter
                 isDrawing = true;
                 DrawingPen = new Pen(settings.PrimaryColor, settings.Width);
                 startPoint = new Point(e.Location.X, e.Location.Y);
-                g = Graphics.FromImage(swapgraphics);
+                g = Graphics.FromImage(this.swapgraphics);
             }
             return;
         }
@@ -47,7 +49,6 @@ namespace TinyPainter
         {
             if (isDrawing)
             { 
-                
                 this.operatorBox.Invalidate();
                 // save the objects we have drawn
                 updateMaingraph();
@@ -57,7 +58,7 @@ namespace TinyPainter
                 if(DrawingPen != null)
                     DrawingPen.Dispose();
 
-                if(g != null)
+                if (g != null)
                     g.Dispose();
             }
             return;
@@ -68,6 +69,7 @@ namespace TinyPainter
         {
             if (isDrawing)
             {
+                //update the information of current map and flush swap image
                 endPoint = new Point(e.Location.X, e.Location.Y);
                 flushSwap();
                 g = Graphics.FromImage(swapgraphics);
@@ -75,6 +77,9 @@ namespace TinyPainter
                 g.DrawRectangle(DrawingPen, getRectangle(endPoint));
 
                 this.operatorBox.Invalidate();
+
+                if (g != null)
+                    g.Dispose();
             }
             return;
         }

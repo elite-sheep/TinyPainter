@@ -19,24 +19,26 @@ namespace TinyPainter
     abstract class Tools
     {
         protected PaintSettings settings;
-        protected Bitmap maingraphics;
+        public ImageFile maingraphics;
         public Bitmap swapgraphics;
         protected PictureBox operatorBox;
         protected Graphics g;
         protected Point startPoint;
 
-        public Tools(PaintSettings setting, Bitmap map, PictureBox newbox)
+        public Tools(PaintSettings setting, ImageFile graphFile, PictureBox newbox)
         {
             this.settings = setting;
-            this.maingraphics = map;
+            this.maingraphics = graphFile.CloneImage();
             this.operatorBox = newbox;
-            this.flushSwap();
+            this.swapgraphics = (Bitmap)maingraphics.Bitmap.Clone();
+            this.startPoint = new Point();
 
             //add these event handlers to the view
             operatorBox.Cursor = Cursors.Cross;
             operatorBox.MouseDown += new MouseEventHandler(MouseDown);
             operatorBox.MouseMove += new MouseEventHandler(MouseMove);
             operatorBox.MouseUp += new MouseEventHandler(MouseUp);
+
 
             return;
         }
@@ -57,6 +59,10 @@ namespace TinyPainter
             if(g != null)
                 g.Dispose();
 
+            this.maingraphics = null;
+            this.swapgraphics = null;
+            this.operatorBox = null;
+
             return;
         }
 
@@ -68,19 +74,14 @@ namespace TinyPainter
 
         public void flushSwap()
         {
-         //   if(swapgraphics != null)
-           //     swapgraphics.Dispose();
-            //swapgraphics = maingraphics;
-            //Console.WriteLine(swapgraphics);
-            swapgraphics = (Bitmap)maingraphics.Clone();
-            //Console.Write(swapgraphics.PixelFormat);
+            if(swapgraphics != null)
+                swapgraphics.Dispose();
+            swapgraphics = (Bitmap)maingraphics.Bitmap.Clone();
         }
 
         public void updateMaingraph()
         {
-            maingraphics = (Bitmap)swapgraphics.Clone();
-            //maingraphics = swapgraphics;
-            //maingraphics = (Bitmap)maingraphics.Clone();
+            maingraphics.Bitmap = (Bitmap)swapgraphics.Clone();
         }
     }
 }

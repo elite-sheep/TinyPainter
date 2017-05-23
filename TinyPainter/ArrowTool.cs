@@ -17,7 +17,7 @@ namespace TinyPainter
 {
     class ArrowTool:Tools
     {
-        public ArrowTool(PaintSettings setting, Bitmap map, PictureBox mainbox)
+        public ArrowTool(PaintSettings setting, ImageFile map, PictureBox mainbox)
             :base(setting,map,mainbox)
         {
             this.operatorBox.Cursor = Cursors.Arrow;

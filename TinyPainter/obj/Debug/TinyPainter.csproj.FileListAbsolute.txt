@@ -7,3 +7,4 @@ C:\Users\Administrator\Documents\TinyPainter\TinyPainter\obj\Debug\TinyPainter.P
 C:\Users\Administrator\Documents\TinyPainter\TinyPainter\obj\Debug\TinyPainter.csproj.GenerateResource.Cache
 C:\Users\Administrator\Documents\TinyPainter\TinyPainter\obj\Debug\TinyPainter.exe
 C:\Users\Administrator\Documents\TinyPainter\TinyPainter\obj\Debug\TinyPainter.pdb
+C:\Users\Administrator\Documents\TinyPainter\TinyPainter\obj\Debug\TinyPainter.AboutTinyPainter.resources

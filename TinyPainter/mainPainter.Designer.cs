@@ -26,7 +26,7 @@ namespace TinyPainter
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
+        protected override void  Dispose(bool disposing)
         {
             if (disposing && (components != null))
             {
@@ -69,6 +69,7 @@ namespace TinyPainter
             this.Pencil = new System.Windows.Forms.ToolStripButton();
             this.Eraser = new System.Windows.Forms.ToolStripButton();
             this.Fill = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.Line = new System.Windows.Forms.ToolStripButton();
             this.Eclipse = new System.Windows.Forms.ToolStripButton();
@@ -162,27 +163,28 @@ namespace TinyPainter
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clearToolStripMenuItem.Text = "Clear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clear_pic);
             // 
             // helpToolStripMenuItem
             // 
@@ -195,8 +197,9 @@ namespace TinyPainter
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.About_App);
             // 
             // statusStrip1
             // 
@@ -246,6 +249,7 @@ namespace TinyPainter
             this.Pencil,
             this.Eraser,
             this.Fill,
+            this.toolStripButton1,
             this.toolStripSeparator2,
             this.Line,
             this.Eclipse,
@@ -295,6 +299,15 @@ namespace TinyPainter
             this.Fill.Name = "Fill";
             this.Fill.Size = new System.Drawing.Size(23, 22);
             this.Fill.Text = "Fill";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
             // 
             // toolStripSeparator2
             // 
@@ -394,7 +407,6 @@ namespace TinyPainter
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel CurStates;
         private ToolStripStatusLabel cursorPos;
-        private ImageFile mainpicFile;
         private ToolStrip toolStrip1;
         private ToolStripButton Arrow;
         private ToolStripButton Pencil;
@@ -408,6 +420,7 @@ namespace TinyPainter
         private ToolStripStatusLabel curstate;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripButton colors;
+        private ToolStripButton toolStripButton1;
     }
 }
 

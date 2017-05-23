@@ -16,13 +16,14 @@ using System.Threading.Tasks;
 
 namespace TinyPainter
 {
+    // the tools used to draw a ellipse on the screen 
     class EclipseTool:Tools
     {
         private bool isDrawing;
         private Pen DrawingPen;
         private Point endPoint;
 
-        public EclipseTool(PaintSettings setting, Bitmap map, PictureBox operatorBox)
+        public EclipseTool(PaintSettings setting, ImageFile map, PictureBox operatorBox)
             : base(setting, map, operatorBox)
         {
             this.isDrawing = false;
@@ -36,7 +37,7 @@ namespace TinyPainter
                 isDrawing = true;
                 DrawingPen = new Pen(settings.PrimaryColor, (float)settings.Width);
                 startPoint = new Point(e.Location.X, e.Location.Y);
-                g = Graphics.FromImage(swapgraphics);
+                g = Graphics.FromImage(this.swapgraphics);
             }
             return;
         }
@@ -45,14 +46,16 @@ namespace TinyPainter
         {
             if (isDrawing)
             {
-                //delete old ellipse
-                swapgraphics = maingraphics;
-                g.DrawEllipse(DrawingPen, getRectangle(endPoint));
-                // save the objects we have drawn
-                maingraphics = swapgraphics;
+                this.operatorBox.Invalidate();
+                this.updateMaingraph();
 
-                DrawingPen.Dispose();
-                isDrawing = false;
+                if (g != null)
+                    g.Dispose();
+
+                if (DrawingPen != null)
+                    DrawingPen.Dispose();
+
+                this.isDrawing = false;
             }
             return;
         }
@@ -61,8 +64,17 @@ namespace TinyPainter
         {
             if (isDrawing)
             {
-                swapgraphics = maingraphics;
+                //update information of current image
+                endPoint = new Point(e.Location.X, e.Location.Y);
+                flushSwap();
+
+                g = Graphics.FromImage(this.swapgraphics);
                 g.DrawEllipse(DrawingPen, getRectangle(endPoint));
+
+                this.operatorBox.Invalidate();
+
+                if (g != null)
+                    g.Dispose();
             }
             return;
         }

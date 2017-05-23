@@ -22,21 +22,24 @@ namespace TinyPainter
         private Pen DrawingPen;
         private Point endPoint;
 
-        public LineTool(PaintSettings setting, Bitmap map, PictureBox operatorBox)
+        public LineTool(PaintSettings setting, ImageFile map, PictureBox operatorBox)
             : base(setting, map, operatorBox)
         {
             this.isDrawing = false;
+            this.endPoint = new Point();
             return;
         }
 
+
+        // Draw a rectangle with given width and color
         public override void MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 isDrawing = true;
-                DrawingPen = new Pen(settings.PrimaryColor, (float)settings.Width);
+                DrawingPen = new Pen(settings.PrimaryColor, settings.Width);
                 startPoint = new Point(e.Location.X, e.Location.Y);
-                g = Graphics.FromImage(swapgraphics);
+                g = Graphics.FromImage(this.swapgraphics);
             }
             return;
         }
@@ -45,24 +48,37 @@ namespace TinyPainter
         {
             if (isDrawing)
             {
-                //delete old ellipse
-                swapgraphics = maingraphics;
-                g.DrawLine(DrawingPen, startPoint, endPoint);
+                this.operatorBox.Invalidate();
                 // save the objects we have drawn
-                maingraphics = swapgraphics;
+                updateMaingraph();
 
-                DrawingPen.Dispose();
                 isDrawing = false;
+
+                if (DrawingPen != null)
+                    DrawingPen.Dispose();
+
+                if (g != null)
+                    g.Dispose();
             }
             return;
         }
+
 
         public override void MouseMove(object sender, MouseEventArgs e)
         {
             if (isDrawing)
             {
-                swapgraphics = maingraphics;
+                //update the information of current map and flush swap image
+                endPoint = new Point(e.Location.X, e.Location.Y);
+                flushSwap();
+                g = Graphics.FromImage(swapgraphics);
+
                 g.DrawLine(DrawingPen,startPoint,endPoint);
+
+                this.operatorBox.Invalidate();
+
+                if (g != null)
+                    g.Dispose();
             }
             return;
         }

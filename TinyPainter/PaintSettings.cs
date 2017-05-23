@@ -27,6 +27,12 @@ namespace TinyPainter
             this.PrimaryColor = Color.Black;
         }
 
+        public PaintSettings(PaintSettings mirror)
+        {
+            width = mirror.width;
+            primaryColor = mirror.primaryColor;
+        }
+
         public int Width{
             get
             {
