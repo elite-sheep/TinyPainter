@@ -43,6 +43,7 @@ namespace TinyPainter
         public void InitOthers()
         {
             this.isSaved = true;
+            this.WidthBox.Text = "5";
             cursettings = new PaintSettings();
             operatormap = new ImageFile(initwidth, initheight, Color.White);
             maingraph = operatormap.CloneImage();
@@ -62,11 +63,16 @@ namespace TinyPainter
 
             this.isSaved = false;
 
-            if(e.ClickedItem == colors)
+            //if the clicked item is color change or line 
+            // width change, we do not need to unload and reload
+            // current button
+            if (e.ClickedItem == colors)
             {
                 changecolor();
                 return;
             }
+            else if (e.ClickedItem == LineWidth)
+                return;
 
             operatormap = curTools.maingraphics.CloneImage();
             curTools.UnloadTool();
@@ -88,6 +94,12 @@ namespace TinyPainter
                 curTools = new PencilTool(cursettings, operatormap, operatebox);
             else if (curbutton == Eraser)
                 curTools = new EraseTool(cursettings, operatormap, operatebox);
+            else if (curbutton == magicPencil)
+                curTools = new MagicPencilTool(cursettings, operatormap, operatebox);
+            else if (curbutton == Fill)
+                curTools = new FillTool(cursettings, operatormap, operatebox);
+            else if (curbutton == Text)
+                curTools = new TextTool(cursettings, operatormap, operatebox);
         }
 
 
@@ -240,6 +252,77 @@ namespace TinyPainter
             Bitmap tmp = curTools.swapgraphics.Clone(rec,curTools.swapgraphics.PixelFormat);
             e.Graphics.DrawImageUnscaledAndClipped(tmp,rec);
             tmp.Dispose();
+            return;
+        }
+
+        /// <summary>
+        /// set new width of drawing pen
+        /// </summary>
+        /// <param name="newwidth"></param>
+        protected void setLineWidth(int newwidth)
+        {
+            if(this.cursettings != null)
+            {
+                this.cursettings.Width = newwidth;
+            }
+        }
+
+        /// <summary>
+        /// set slim size of line width
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void slimWidth(object sender, EventArgs e)
+        {
+            this.setLineWidth(1);
+        }
+
+        /// <summary>
+        /// set medium size of width
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void mediumWidthe(object sender, EventArgs e)
+        {
+            this.setLineWidth(5);
+        }
+
+        /// <summary>
+        /// set large line width
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void largeWidth(object sender, EventArgs e)
+        {
+            this.setLineWidth(10);
+        }
+
+        /// <summary>
+        /// flush the text when text box is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void flushBox(object sender, EventArgs e)
+        {
+            this.WidthBox.Text = "";
+        }
+
+        /// <summary>
+        /// set the width of line by users
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void selfmadeWidth(object sender, EventArgs e)
+        {
+            string res = WidthBox.Text;
+            int newwidth = 0;
+            if (int.TryParse(res, out newwidth) == true)
+                this.setLineWidth(newwidth);
+            else
+            {
+                MessageBox.Show("Invalid Value!!");
+                WidthBox.Text = cursettings.Width.ToString();
+            }
             return;
         }
     }

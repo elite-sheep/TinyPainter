@@ -69,13 +69,19 @@ namespace TinyPainter
             this.Pencil = new System.Windows.Forms.ToolStripButton();
             this.Eraser = new System.Windows.Forms.ToolStripButton();
             this.Fill = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.magicPencil = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.Line = new System.Windows.Forms.ToolStripButton();
             this.Eclipse = new System.Windows.Forms.ToolStripButton();
             this.Rectangle = new System.Windows.Forms.ToolStripButton();
             this.Text = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.LineWidth = new System.Windows.Forms.ToolStripDropDownButton();
+            this.SlimWidth = new System.Windows.Forms.ToolStripMenuItem();
+            this.mediumWidth = new System.Windows.Forms.ToolStripMenuItem();
+            this.LargeWidth = new System.Windows.Forms.ToolStripMenuItem();
+            this.WidthBox = new System.Windows.Forms.ToolStripTextBox();
+            this.OkButton = new System.Windows.Forms.ToolStripMenuItem();
             this.colors = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -163,26 +169,26 @@ namespace TinyPainter
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clear_pic);
             // 
@@ -197,7 +203,7 @@ namespace TinyPainter
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.About_App);
             // 
@@ -249,13 +255,14 @@ namespace TinyPainter
             this.Pencil,
             this.Eraser,
             this.Fill,
-            this.toolStripButton1,
+            this.magicPencil,
             this.toolStripSeparator2,
             this.Line,
             this.Eclipse,
             this.Rectangle,
             this.Text,
             this.toolStripSeparator3,
+            this.LineWidth,
             this.colors});
             this.toolStrip1.Location = new System.Drawing.Point(0, 25);
             this.toolStrip1.Name = "toolStrip1";
@@ -300,14 +307,14 @@ namespace TinyPainter
             this.Fill.Size = new System.Drawing.Size(23, 22);
             this.Fill.Text = "Fill";
             // 
-            // toolStripButton1
+            // magicPencil
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.magicPencil.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.magicPencil.Image = ((System.Drawing.Image)(resources.GetObject("magicPencil.Image")));
+            this.magicPencil.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.magicPencil.Name = "magicPencil";
+            this.magicPencil.Size = new System.Drawing.Size(23, 22);
+            this.magicPencil.Text = "toolStripButton1";
             // 
             // toolStripSeparator2
             // 
@@ -355,13 +362,62 @@ namespace TinyPainter
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
+            // LineWidth
+            // 
+            this.LineWidth.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.LineWidth.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SlimWidth,
+            this.mediumWidth,
+            this.LargeWidth,
+            this.WidthBox,
+            this.OkButton});
+            this.LineWidth.Image = ((System.Drawing.Image)(resources.GetObject("LineWidth.Image")));
+            this.LineWidth.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LineWidth.Name = "LineWidth";
+            this.LineWidth.Size = new System.Drawing.Size(55, 22);
+            this.LineWidth.Text = "Width";
+            // 
+            // SlimWidth
+            // 
+            this.SlimWidth.Name = "SlimWidth";
+            this.SlimWidth.Size = new System.Drawing.Size(160, 22);
+            this.SlimWidth.Text = "Slim";
+            this.SlimWidth.Click += new System.EventHandler(this.slimWidth);
+            // 
+            // mediumWidth
+            // 
+            this.mediumWidth.Name = "mediumWidth";
+            this.mediumWidth.Size = new System.Drawing.Size(160, 22);
+            this.mediumWidth.Text = "Medium";
+            this.mediumWidth.Click += new System.EventHandler(this.mediumWidthe);
+            // 
+            // LargeWidth
+            // 
+            this.LargeWidth.Name = "LargeWidth";
+            this.LargeWidth.Size = new System.Drawing.Size(160, 22);
+            this.LargeWidth.Text = "Large";
+            this.LargeWidth.Click += new System.EventHandler(this.largeWidth);
+            // 
+            // WidthBox
+            // 
+            this.WidthBox.Name = "WidthBox";
+            this.WidthBox.Size = new System.Drawing.Size(100, 23);
+            this.WidthBox.Click += new System.EventHandler(this.flushBox);
+            // 
+            // OkButton
+            // 
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(160, 22);
+            this.OkButton.Text = "OK";
+            this.OkButton.Click += new System.EventHandler(this.selfmadeWidth);
+            // 
             // colors
             // 
             this.colors.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.colors.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.colors.Name = "colors";
             this.colors.Size = new System.Drawing.Size(23, 22);
-            this.colors.Text = "Colors";
+            this.colors.Text = "toolStripButton2";
             // 
             // mainPainter
             // 
@@ -419,8 +475,14 @@ namespace TinyPainter
         private ToolStripButton Text;
         private ToolStripStatusLabel curstate;
         private ToolStripSeparator toolStripSeparator3;
+        private ToolStripButton magicPencil;
+        private ToolStripDropDownButton LineWidth;
+        private ToolStripMenuItem SlimWidth;
+        private ToolStripMenuItem mediumWidth;
+        private ToolStripMenuItem LargeWidth;
+        private ToolStripTextBox WidthBox;
+        private ToolStripMenuItem OkButton;
         private ToolStripButton colors;
-        private ToolStripButton toolStripButton1;
     }
 }
 

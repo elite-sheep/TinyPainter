@@ -57,8 +57,10 @@
     <Compile Include="ArrowTool.cs" />
     <Compile Include="EclipseTool.cs" />
     <Compile Include="EraseTool.cs" />
+    <Compile Include="FillTool.cs" />
     <Compile Include="ImageFile.cs" />
     <Compile Include="LineTool.cs" />
+    <Compile Include="MagicPencilTool.cs" />
     <Compile Include="mainPainter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +72,14 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RectangleTool.cs" />
+    <Compile Include="Stack.cs" />
+    <Compile Include="TextDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TextDialog.Designer.cs">
+      <DependentUpon>TextDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TextTool.cs" />
     <Compile Include="Tools.cs" />
     <EmbeddedResource Include="AboutTinyPainter.resx">
       <DependentUpon>AboutTinyPainter.cs</DependentUpon>
@@ -86,6 +96,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TextDialog.resx">
+      <DependentUpon>TextDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
