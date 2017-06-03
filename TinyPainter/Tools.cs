@@ -28,7 +28,7 @@ namespace TinyPainter
         public Tools(PaintSettings setting, ImageFile graphFile, PictureBox newbox)
         {
             this.settings = setting;
-            this.maingraphics = graphFile.CloneImage();
+            this.maingraphics = graphFile;
             this.operatorBox = newbox;
             this.swapgraphics = (Bitmap)maingraphics.Bitmap.Clone();
             this.startPoint = new Point();

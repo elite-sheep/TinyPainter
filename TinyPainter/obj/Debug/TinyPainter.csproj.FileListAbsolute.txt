@@ -9,3 +9,8 @@ C:\Users\Administrator\Documents\TinyPainter\TinyPainter\obj\Debug\TinyPainter.e
 C:\Users\Administrator\Documents\TinyPainter\TinyPainter\obj\Debug\TinyPainter.pdb
 C:\Users\Administrator\Documents\TinyPainter\TinyPainter\obj\Debug\TinyPainter.AboutTinyPainter.resources
 C:\Users\Administrator\Documents\TinyPainter\TinyPainter\obj\Debug\TinyPainter.TextDialog.resources
+C:\Users\Administrator\Documents\TinyPainter\TinyPainter\obj\Debug\TinyPainter.NewForm.resources
+C:\Users\Administrator\Documents\TinyPainter\TinyPainter\bin\Debug\TinyPainter.exe.manifest
+C:\Users\Administrator\Documents\TinyPainter\TinyPainter\bin\Debug\TinyPainter.application
+C:\Users\Administrator\Documents\TinyPainter\TinyPainter\obj\Debug\TinyPainter.exe.manifest
+C:\Users\Administrator\Documents\TinyPainter\TinyPainter\obj\Debug\TinyPainter.application

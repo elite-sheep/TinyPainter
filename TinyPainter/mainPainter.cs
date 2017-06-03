@@ -74,6 +74,7 @@ namespace TinyPainter
             else if (e.ClickedItem == LineWidth)
                 return;
 
+            curTools.updateMaingraph();
             operatormap = curTools.maingraphics.CloneImage();
             curTools.UnloadTool();
             
@@ -130,7 +131,19 @@ namespace TinyPainter
 
         protected void new_pic(object sender, EventArgs e)
         {
-
+            NewForm newtab = new NewForm();
+            if(newtab.ShowDialog() == DialogResult.OK)
+            {
+                int newwidth = newtab.widthres;
+                int newheight = newtab.heightres;
+                maingraph.Bitmap.Dispose();
+                operatormap.Bitmap.Dispose();
+                operatormap = new ImageFile(newwidth, newheight, Color.White);
+                maingraph = operatormap.CloneImage();
+                operatebox.Height = newheight;
+                operatebox.Width = newwidth;
+                operatebox.Invalidate();
+            }
         }
 
         /// <summary>
@@ -167,6 +180,7 @@ namespace TinyPainter
         {
             if(isSaved == false)
             {
+                curTools.updateMaingraph();
                 maingraph = operatormap.CloneImage();
                 isSaved = true;
             }
@@ -174,7 +188,22 @@ namespace TinyPainter
 
         protected void saveas_pic(object sender, EventArgs e)
         {
+            if (isSaved == false)
+            {
+                curTools.updateMaingraph();
+                maingraph = operatormap.CloneImage();
+                isSaved = true;
+            }
 
+            SaveFileDialog saveDlg = new SaveFileDialog();
+            saveDlg.Filter = "Bitmap (*.BMP)|*.BMP";
+            if (saveDlg.ShowDialog() == DialogResult.OK)
+            {
+                if (!maingraph.save(saveDlg.FileName))
+                    MessageBox.Show("Error");
+                else
+                    ShowImage();
+            }
         }
 
         /// <summary>
