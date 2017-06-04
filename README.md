@@ -151,9 +151,10 @@ Procedure MagicPencil():
 - This project is open-sourced and we can get the source code from this <a href="https://github.com/Aaron19960821/TinyPainter">link</a>.
 - An tiny installer is also provided and you can just find it in this <a href="https://github.com/Aaron19960821/TinyPainter/tree/master/TinyPainter/publish">link</a>
 - Some new features are planing, I want my painter to have more features such as the text dialog support more language rendering.
-- This is the first project I make after I started learning coding in C# and .NET and some of the notes can be find in my <a href="https://aaron19960821.github.io"></a>
+- This is the first project I make after I started learning coding in C# and .NET and some of the notes can be find in my <a href="https://aaron19960821.github.io">blog</a>.
 - Any advice or pull requests for this project are welcomed.
 
 ### Reference
 
-[1] Mahesh Chand. Graphics Programming with GDI+. Publishing House of Electronics Industry, 2005.
+[1] Mahesh Chand. Graphics Programming with GDI+. Publishing House of Electronics Industry, 2005.  
+[2] Stephen Prata. C# Primer Plus. 人民邮电出版社, 2005
