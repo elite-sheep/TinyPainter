@@ -17,8 +17,8 @@ namespace TinyPainter
 {
     public partial class mainPainter : Form
     {
-        private const int initwidth = 380;
-        private const int initheight = 240;
+        private const int initwidth = 600;
+        private const int initheight = 450;
 
         protected ToolStripItem curbutton;
         protected bool isSaved;
@@ -53,56 +53,79 @@ namespace TinyPainter
             colors.BackColor = Color.Black;
         }
 
-        /// <summary>
-        /// handle events happened in tool bar
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void Tool_Pressed(object sender, ToolStripItemClickedEventArgs e)
+        protected void update()
         {
-
             this.isSaved = false;
-
-            //if the clicked item is color change or line 
-            // width change, we do not need to unload and reload
-            // current button
-            if (e.ClickedItem == colors)
-            {
-                changecolor();
-                return;
-            }
-            else if (e.ClickedItem == LineWidth)
-                return;
-
             curTools.updateMaingraph();
-            operatormap = curTools.maingraphics.CloneImage();
-            curTools.UnloadTool();
-            
-
-            curbutton = e.ClickedItem;
-            curstate.Image = curbutton.Image;
-
-
-            if (curbutton == Eclipse)
-                curTools = new EclipseTool(cursettings, operatormap, operatebox);
-            else if (curbutton == Line)
-                curTools = new LineTool(cursettings, operatormap, operatebox);
-            else if (curbutton == Arrow)
-                curTools = new ArrowTool(cursettings, operatormap, operatebox);
-            else if (curbutton == Rectangle)
-                curTools = new RectangleTool(cursettings, operatormap, operatebox);
-            else if (curbutton == Pencil)
-                curTools = new PencilTool(cursettings, operatormap, operatebox);
-            else if (curbutton == Eraser)
-                curTools = new EraseTool(cursettings, operatormap, operatebox);
-            else if (curbutton == magicPencil)
-                curTools = new MagicPencilTool(cursettings, operatormap, operatebox);
-            else if (curbutton == Fill)
-                curTools = new FillTool(cursettings, operatormap, operatebox);
-            else if (curbutton == Text)
-                curTools = new TextTool(cursettings, operatormap, operatebox);
         }
 
+        public void Arrow_Clicked(object sender, EventArgs e)
+        {
+            update();
+            curTools.UnloadTool();
+            curTools = new ArrowTool(cursettings, operatormap, operatebox);
+        }
+
+        public void Pencil_Clicked(object sender, EventArgs e)
+        {
+            update();
+            curTools.UnloadTool();
+            curTools = new PencilTool(cursettings, operatormap, operatebox);
+        }
+
+        public void Eraser_Clicked(object sender, EventArgs e)
+        {
+            update();
+            curTools.UnloadTool();
+            curTools = new EraseTool(cursettings, operatormap, operatebox);
+        }
+
+        public void MagicPencil_Clicked(object sender, EventArgs e)
+        {
+            update();
+            curTools.UnloadTool();
+            curTools = new MagicPencilTool(cursettings, operatormap, operatebox);
+        }
+
+        public void Fill_Clicked(object sender, EventArgs e)
+        {
+            update();
+            curTools.UnloadTool();
+            curTools = new FillTool(cursettings, operatormap, operatebox);
+        }
+
+        public void Line_Clicked(object sender, EventArgs e)
+        {
+            update();
+            curTools.UnloadTool();
+            curTools = new LineTool(cursettings, operatormap, operatebox);
+        }
+
+        public void Eclipse_Clicked(object sender, EventArgs e)
+        {
+            update();
+            curTools.UnloadTool();
+            curTools = new EclipseTool(cursettings, operatormap, operatebox);
+        }
+
+        public void Rectangle_Clicked(object sender, EventArgs e)
+        {
+            update();
+            curTools.UnloadTool();
+            curTools = new RectangleTool(cursettings, operatormap, operatebox);
+        }
+
+        public void Text_Clicked(object sender, EventArgs e)
+        {
+            update();
+            curTools.UnloadTool();
+            curTools = new TextTool(cursettings, operatormap, operatebox);
+        }
+
+        public void color_Clicked(object sender, EventArgs e)
+        {
+            changecolor();
+        }
 
         /// <summary>
         /// change current primary color
@@ -278,7 +301,7 @@ namespace TinyPainter
         protected void paintOnBox(object sender, PaintEventArgs e)
         {
             Rectangle rec = e.ClipRectangle;
-            Bitmap tmp = curTools.swapgraphics.Clone(rec,curTools.swapgraphics.PixelFormat);
+            Bitmap tmp = (Bitmap)curTools.swapgraphics.Clone();
             e.Graphics.DrawImageUnscaledAndClipped(tmp,rec);
             tmp.Dispose();
             return;

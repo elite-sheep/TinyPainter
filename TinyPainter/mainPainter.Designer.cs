@@ -172,7 +172,7 @@ namespace TinyPainter
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copy_pic);
             // 
@@ -180,14 +180,14 @@ namespace TinyPainter
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.paste_pic);
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cut_pic);
             // 
@@ -275,7 +275,6 @@ namespace TinyPainter
             this.toolStrip1.Size = new System.Drawing.Size(584, 25);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.Tool_Pressed);
             // 
             // Arrow
             // 
@@ -285,6 +284,7 @@ namespace TinyPainter
             this.Arrow.Name = "Arrow";
             this.Arrow.Size = new System.Drawing.Size(23, 22);
             this.Arrow.Text = "Arrow";
+            this.Arrow.Click += new System.EventHandler(this.Arrow_Clicked);
             // 
             // Pencil
             // 
@@ -294,6 +294,7 @@ namespace TinyPainter
             this.Pencil.Name = "Pencil";
             this.Pencil.Size = new System.Drawing.Size(23, 22);
             this.Pencil.Text = "Pencil";
+            this.Pencil.Click += new System.EventHandler(this.Pencil_Clicked);
             // 
             // Eraser
             // 
@@ -303,6 +304,7 @@ namespace TinyPainter
             this.Eraser.Name = "Eraser";
             this.Eraser.Size = new System.Drawing.Size(23, 22);
             this.Eraser.Text = "Eraser";
+            this.Eraser.Click += new System.EventHandler(this.Eraser_Clicked);
             // 
             // Fill
             // 
@@ -312,6 +314,7 @@ namespace TinyPainter
             this.Fill.Name = "Fill";
             this.Fill.Size = new System.Drawing.Size(23, 22);
             this.Fill.Text = "Fill";
+            this.Fill.Click += new System.EventHandler(this.Fill_Clicked);
             // 
             // magicPencil
             // 
@@ -321,6 +324,7 @@ namespace TinyPainter
             this.magicPencil.Name = "magicPencil";
             this.magicPencil.Size = new System.Drawing.Size(23, 22);
             this.magicPencil.Text = "toolStripButton1";
+            this.magicPencil.Click += new System.EventHandler(this.MagicPencil_Clicked);
             // 
             // toolStripSeparator2
             // 
@@ -335,6 +339,7 @@ namespace TinyPainter
             this.Line.Name = "Line";
             this.Line.Size = new System.Drawing.Size(23, 22);
             this.Line.Text = "Line";
+            this.Line.Click += new System.EventHandler(this.Line_Clicked);
             // 
             // Eclipse
             // 
@@ -344,6 +349,7 @@ namespace TinyPainter
             this.Eclipse.Name = "Eclipse";
             this.Eclipse.Size = new System.Drawing.Size(23, 22);
             this.Eclipse.Text = "Eclipse";
+            this.Eclipse.Click += new System.EventHandler(this.Eclipse_Clicked);
             // 
             // Rectangle
             // 
@@ -353,6 +359,7 @@ namespace TinyPainter
             this.Rectangle.Name = "Rectangle";
             this.Rectangle.Size = new System.Drawing.Size(23, 22);
             this.Rectangle.Text = "Rectangle";
+            this.Rectangle.Click += new System.EventHandler(this.Rectangle_Clicked);
             // 
             // Text
             // 
@@ -362,6 +369,7 @@ namespace TinyPainter
             this.Text.Name = "Text";
             this.Text.Size = new System.Drawing.Size(23, 22);
             this.Text.Text = "Text";
+            this.Text.Click += new System.EventHandler(this.Text_Clicked);
             // 
             // toolStripSeparator3
             // 
@@ -424,6 +432,7 @@ namespace TinyPainter
             this.colors.Name = "colors";
             this.colors.Size = new System.Drawing.Size(23, 22);
             this.colors.Text = "toolStripButton2";
+            this.colors.Click += new System.EventHandler(this.color_Clicked);
             // 
             // mainPainter
             // 
