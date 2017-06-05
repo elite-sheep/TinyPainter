@@ -74,7 +74,7 @@ namespace TinyPainter
             this.Line = new System.Windows.Forms.ToolStripButton();
             this.Eclipse = new System.Windows.Forms.ToolStripButton();
             this.Rectangle = new System.Windows.Forms.ToolStripButton();
-            this.Text = new System.Windows.Forms.ToolStripButton();
+            this.TextButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.LineWidth = new System.Windows.Forms.ToolStripDropDownButton();
             this.SlimWidth = new System.Windows.Forms.ToolStripMenuItem();
@@ -266,7 +266,7 @@ namespace TinyPainter
             this.Line,
             this.Eclipse,
             this.Rectangle,
-            this.Text,
+            this.TextButton,
             this.toolStripSeparator3,
             this.LineWidth,
             this.colors});
@@ -361,15 +361,15 @@ namespace TinyPainter
             this.Rectangle.Text = "Rectangle";
             this.Rectangle.Click += new System.EventHandler(this.Rectangle_Clicked);
             // 
-            // Text
+            // TextButton
             // 
-            this.Text.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Text.Image = ((System.Drawing.Image)(resources.GetObject("Text.Image")));
-            this.Text.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Text.Name = "Text";
-            this.Text.Size = new System.Drawing.Size(23, 22);
-            this.Text.Text = "Text";
-            this.Text.Click += new System.EventHandler(this.Text_Clicked);
+            this.TextButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TextButton.Image = ((System.Drawing.Image)(resources.GetObject("TextButton.Image")));
+            this.TextButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TextButton.Name = "TextButton";
+            this.TextButton.Size = new System.Drawing.Size(23, 22);
+            this.TextButton.Text = "Text";
+            this.TextButton.Click += new System.EventHandler(this.Text_Clicked);
             // 
             // toolStripSeparator3
             // 
@@ -488,7 +488,7 @@ namespace TinyPainter
         private ToolStripButton Line;
         private ToolStripButton Eclipse;
         private ToolStripButton Rectangle;
-        private ToolStripButton Text;
+        private ToolStripButton TextButton;
         private ToolStripStatusLabel curstate;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripButton magicPencil;

@@ -54,7 +54,7 @@ namespace TinyPainter
         }
 
         protected void update()
-        {
+        { 
             this.isSaved = false;
             curTools.updateMaingraph();
         }

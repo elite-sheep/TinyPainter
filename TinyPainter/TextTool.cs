@@ -58,7 +58,7 @@ namespace TinyPainter
             return;
         }
 
-        public void UnloadTool()
+        public override void UnloadTool()
         {
             base.UnloadTool();
             operatorBox.MouseClick -= new MouseEventHandler(this.MouseClick);

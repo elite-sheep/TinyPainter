@@ -47,7 +47,7 @@ namespace TinyPainter
         public abstract void MouseMove(object sender, MouseEventArgs e);
         public abstract void MouseUp(object sender, MouseEventArgs e);
 
-        public void UnloadTool()
+        public virtual void UnloadTool()
         {
             // unload the tools and event handlers
             operatorBox.Cursor = Cursors.Arrow;
