@@ -3,11 +3,11 @@
 ### Introduction
 
 This application provides various kinds of functions to enable users to show or summerize their opinions in group meetings
-or other cases. It supports their users to create, modify, or redo their works. Also I plan to provide some specific functions in this program, such as enable users to use a pen with gradient color or write psedocode with code highlight. 
+or in other cases. It supports its users to create, modify, or redo their works. Also we provide some special functions in this program, such as magic color features and code-highlighting funtions. 
 
-Moreover, although it is just a homework in school, I wish to follow some rules in software engineering and make this program a bigger one. Thus any help, advice or pull request in Github is welcome. Hope to hear from you.
+Moreover, although it is just a homework in school, I wish to follow some rules in software engineering and make this program a usable one. Thus any help, advice or pull request in Github is welcome. Hope to hear from you.
 
-In this documentation, in the first part I will introduce some basic parts of this program and for some interesting part I will briefly introduce how I implemented it. In the second part the plan I develop this program will be stated. In the third part, there will be some screenshots and basic turtorials of this software. In the final part, some references will be listed and I want to talk about my future plan of this program.
+In this documentation, in the first part I will introduce some basic parts of this program and for some interesting part I will briefly introduce how I implemented it. In the second part, there will be some screenshots and basic turtorials of this software. In the final part, some references will be listed and I want to talk about my future plan of this program.
 
 ### System Analysis
 
@@ -15,9 +15,9 @@ When we attend a group meeting or some talk shows. It is quite ordinary that we 
 
 The main aim for this software is to provide a good environment for coders to show their opinions in a group meeting. Also we can use this application to paint a graph to show our idea in our plan or record some notes from teachers in the class. It enables us to draw some basic objects on a graph map and save or copy it to anywhere we like. In the end, I want to privide a good environment for coders to show their ideas with psedocode.
 
-This system will be implemented with C# and .NET framework. Therefore it will mainly work on windows platform. However, as .NET framework is now available on Linux/MACOS platfrom, I may transform this program to these platform some time in the future. Currently I have no idea about this plan. It will mainly depend on my mood in the future. Obviosly, this system can work on almost every PC and other computers running Windows.
+This system is implemented with C# and .NET framework. Therefore it will mainly work on windows platform. However, as .NET framework is now available on Linux/MACOS platfrom, I may transform this program to these platform some time in the future. Currently I have no idea about this plan. It will mainly depend on my mood in the future. Obviosly, this system can work on almost every PC and other computers running Windows.
 
-To imlement this program, there are a lot techniques required. To develop the basic form, some basic knowledge of Windows Form is needed. The basic tools to paint basic objects on the map will need GDI+. Moreover, to implement code highlight, some knowledge in theory of compile, especially DFA is necessary. Finally, some color gradient knowledge is needed to develop the magic color function.
+To implement this program, there are a lot techniques required. To develop the basic form, some basic knowledge of Windows Form is needed. The basic tools to paint basic objects on the map will need GDI+. Moreover, to implement code highlight, some knowledge in theory of compile, especially DFA is necessary. Finally, some color gradient knowledge is needed to develop the magic color function.
 
 Some basic information about this system is here below:  
 
@@ -28,7 +28,11 @@ Some basic information about this system is here below:
 - Tools inplementation: GDI+
 - Version Control: Git
 
-### Different Parts Of this Program
+### Implemtntation
+
+To implemant this Windows desktop application, I use the classical MVC framework to design this program. Here is some of the objects I involved in this application design process.
+
+#### Controller
 
 - Tools
 	- Tools is the basic object of all painting tools, it provides some quite useful functions and event handlers for its child objects to inherit. By using polymorphism, we greatly decrease the complexity of programming and standard our painting tools.
@@ -50,7 +54,7 @@ By using polymorphic, the complexity of programming is dramatically reduced and 
 
 
 
-#### User Interface
+#### View
 
 In this program, I design 3 UIs to link our users and program.
 
@@ -62,7 +66,7 @@ The overall data flow graph is shown below.
 
 <img src="./graph/DataFlow.png"></img>
 
-### Some Problem
+### Some Problems
 
 When I designed this program, I met a lot of problems and here are some of them.
 
