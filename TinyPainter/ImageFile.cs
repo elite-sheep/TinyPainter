@@ -15,10 +15,11 @@ using System.Threading.Tasks;
 
 namespace TinyPainter
 {
-    class ImageFile
+    class ImageFile:IDisposable
     {
         private string filename;
         private Bitmap bitmap;
+        private bool disposed = false;
 
         //initialize the image with origin color
         public ImageFile(int width,int height,Color backcolor)
@@ -92,6 +93,29 @@ namespace TinyPainter
         public ImageFile CloneImage()
         {
             return new ImageFile(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed) return;
+
+            if (disposing)
+            {
+            }
+
+            this.Bitmap.Dispose();
+            disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~ImageFile()
+        {
+            Dispose(false);
         }
     }
 }

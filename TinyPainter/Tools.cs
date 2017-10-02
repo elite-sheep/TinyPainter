@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 namespace TinyPainter
 {
     // this object is used to standard other object painting tools
-    abstract class Tools
+    abstract class Tools: IDisposable
     {
         protected PaintSettings settings;
         public ImageFile maingraphics;
@@ -24,6 +24,7 @@ namespace TinyPainter
         protected PictureBox operatorBox;
         protected Graphics g;
         protected Point startPoint;
+        private bool disposed = false;
 
         public Tools(PaintSettings setting, ImageFile graphFile, PictureBox newbox)
         {
@@ -82,6 +83,44 @@ namespace TinyPainter
         public void updateMaingraph()
         {
             maingraphics.Bitmap = (Bitmap)swapgraphics.Clone();
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed) return;
+
+            if (disposing)
+            {
+            }
+
+            if (g != null)
+            {
+                g.Dispose();
+            }
+            if (swapgraphics != null)
+            {
+                swapgraphics.Dispose();
+            }
+            if (operatorBox != null)
+            {
+                operatorBox.Dispose();
+            }
+            if (this.maingraphics != null)
+            {
+                this.maingraphics.Dispose();
+            }
+            disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~Tools()
+        {
+            Dispose(false);
         }
     }
 }

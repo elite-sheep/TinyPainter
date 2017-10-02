@@ -68,13 +68,11 @@ namespace TinyPainter
                 endPoint = new Point(e.Location.X, e.Location.Y);
                 flushSwap();
 
-                g = Graphics.FromImage(this.swapgraphics);
-                g.DrawEllipse(DrawingPen, getRectangle(endPoint));
-
-                this.operatorBox.Invalidate();
-
-                if (g != null)
-                    g.Dispose();
+                using (g = Graphics.FromImage(this.swapgraphics))
+                {
+                    g.DrawEllipse(DrawingPen, getRectangle(endPoint));
+                    this.operatorBox.Invalidate();
+                }
             }
             return;
         }

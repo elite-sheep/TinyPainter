@@ -71,14 +71,12 @@ namespace TinyPainter
                 //update the information of current map and flush swap image
                 endPoint = new Point(e.Location.X, e.Location.Y);
                 flushSwap();
-                g = Graphics.FromImage(swapgraphics);
 
-                g.DrawLine(DrawingPen,startPoint,endPoint);
-
-                this.operatorBox.Invalidate();
-
-                if (g != null)
-                    g.Dispose();
+                using (g = Graphics.FromImage(swapgraphics))
+                {
+                    g.DrawLine(DrawingPen, startPoint, endPoint);
+                    this.operatorBox.Invalidate();
+                }
             }
             return;
         }

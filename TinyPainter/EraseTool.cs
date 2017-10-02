@@ -58,12 +58,11 @@ namespace TinyPainter
                 this.startPoint = this.curPoint;
                 this.curPoint = new Point(e.Location.X, e.Location.Y);
 
-                g = Graphics.FromImage(swapgraphics);
-                g.DrawLine(DrawingPen, startPoint, curPoint);
-                this.operatorBox.Invalidate();
-
-                if (g != null)
-                    g.Dispose();
+                using (g = Graphics.FromImage(swapgraphics))
+                {
+                    g.DrawLine(DrawingPen, startPoint, curPoint);
+                    this.operatorBox.Invalidate();
+                }
             }
         }
     }
