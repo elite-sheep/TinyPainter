@@ -2,16 +2,12 @@
 using System.Windows.Forms;
 using System.Drawing.Imaging;
 using System.Drawing;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Text;
-using System.Windows.Forms;
 using System.IO;
-using System.Drawing.Imaging;
 
 namespace TinyPainter
 {
@@ -50,7 +46,7 @@ namespace TinyPainter
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,18 +60,18 @@ namespace TinyPainter
             this.cursorPos = new System.Windows.Forms.ToolStripStatusLabel();
             this.curstate = new System.Windows.Forms.ToolStripStatusLabel();
             this.operatebox = new System.Windows.Forms.PictureBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.ToolStrip1 = new System.Windows.Forms.ToolStrip();
             this.Arrow = new System.Windows.Forms.ToolStripButton();
             this.Pencil = new System.Windows.Forms.ToolStripButton();
             this.Eraser = new System.Windows.Forms.ToolStripButton();
             this.Fill = new System.Windows.Forms.ToolStripButton();
             this.magicPencil = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.Line = new System.Windows.Forms.ToolStripButton();
             this.Eclipse = new System.Windows.Forms.ToolStripButton();
             this.Rectangle = new System.Windows.Forms.ToolStripButton();
             this.TextButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.LineWidth = new System.Windows.Forms.ToolStripDropDownButton();
             this.SlimWidth = new System.Windows.Forms.ToolStripMenuItem();
             this.mediumWidth = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,7 +82,7 @@ namespace TinyPainter
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.operatebox)).BeginInit();
-            this.toolStrip1.SuspendLayout();
+            this.ToolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -108,7 +104,7 @@ namespace TinyPainter
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem,
-            this.toolStripSeparator1,
+            this.ToolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(39, 21);
@@ -145,10 +141,10 @@ namespace TinyPainter
             this.saveAsToolStripMenuItem.Text = "Save As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveas_pic);
             // 
-            // toolStripSeparator1
+            // ToolStripSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(152, 6);
+            this.ToolStripSeparator1.Name = "ToolStripSeparator1";
+            this.ToolStripSeparator1.Size = new System.Drawing.Size(152, 6);
             // 
             // exitToolStripMenuItem
             // 
@@ -235,7 +231,7 @@ namespace TinyPainter
             // 
             this.cursorPos.Name = "cursorPos";
             this.cursorPos.Size = new System.Drawing.Size(131, 17);
-            this.cursorPos.Text = "toolStripStatusLabel1";
+            this.cursorPos.Text = "ToolStripStatusLabel1";
             this.cursorPos.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pos_display);
             // 
             // curstate
@@ -252,29 +248,29 @@ namespace TinyPainter
             this.operatebox.Size = new System.Drawing.Size(380, 240);
             this.operatebox.TabIndex = 3;
             this.operatebox.TabStop = false;
-            this.operatebox.Paint += new System.Windows.Forms.PaintEventHandler(this.paintOnBox);
+            this.operatebox.Paint += new System.Windows.Forms.PaintEventHandler(this.PaintOnBox);
             // 
-            // toolStrip1
+            // ToolStrip1
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Arrow,
             this.Pencil,
             this.Eraser,
             this.Fill,
             this.magicPencil,
-            this.toolStripSeparator2,
+            this.ToolStripSeparator2,
             this.Line,
             this.Eclipse,
             this.Rectangle,
             this.TextButton,
-            this.toolStripSeparator3,
+            this.ToolStripSeparator3,
             this.LineWidth,
             this.colors});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 25);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(584, 25);
-            this.toolStrip1.TabIndex = 4;
-            this.toolStrip1.Text = "toolStrip1";
+            this.ToolStrip1.Location = new System.Drawing.Point(0, 25);
+            this.ToolStrip1.Name = "ToolStrip1";
+            this.ToolStrip1.Size = new System.Drawing.Size(584, 25);
+            this.ToolStrip1.TabIndex = 4;
+            this.ToolStrip1.Text = "ToolStrip1";
             // 
             // Arrow
             // 
@@ -323,13 +319,13 @@ namespace TinyPainter
             this.magicPencil.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.magicPencil.Name = "magicPencil";
             this.magicPencil.Size = new System.Drawing.Size(23, 22);
-            this.magicPencil.Text = "toolStripButton1";
+            this.magicPencil.Text = "ToolStripButton1";
             this.magicPencil.Click += new System.EventHandler(this.MagicPencil_Clicked);
             // 
-            // toolStripSeparator2
+            // ToolStripSeparator2
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.ToolStripSeparator2.Name = "ToolStripSeparator2";
+            this.ToolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // Line
             // 
@@ -371,10 +367,10 @@ namespace TinyPainter
             this.TextButton.Text = "Text";
             this.TextButton.Click += new System.EventHandler(this.Text_Clicked);
             // 
-            // toolStripSeparator3
+            // ToolStripSeparator3
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.ToolStripSeparator3.Name = "ToolStripSeparator3";
+            this.ToolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // LineWidth
             // 
@@ -431,15 +427,15 @@ namespace TinyPainter
             this.colors.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.colors.Name = "colors";
             this.colors.Size = new System.Drawing.Size(23, 22);
-            this.colors.Text = "toolStripButton2";
-            this.colors.Click += new System.EventHandler(this.color_Clicked);
+            this.colors.Text = "ToolStripButton2";
+            this.colors.Click += new System.EventHandler(this.Color_Clicked);
             // 
             // mainPainter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 411);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.ToolStrip1);
             this.Controls.Add(this.operatebox);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -451,8 +447,8 @@ namespace TinyPainter
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.operatebox)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.ToolStrip1.ResumeLayout(false);
+            this.ToolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -473,24 +469,24 @@ namespace TinyPainter
         private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator ToolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private PictureBox operatebox;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel CurStates;
         private ToolStripStatusLabel cursorPos;
-        private ToolStrip toolStrip1;
+        private ToolStrip ToolStrip1;
         private ToolStripButton Arrow;
         private ToolStripButton Pencil;
         private ToolStripButton Eraser;
         private ToolStripButton Fill;
-        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripSeparator ToolStripSeparator2;
         private ToolStripButton Line;
         private ToolStripButton Eclipse;
         private ToolStripButton Rectangle;
         private ToolStripButton TextButton;
         private ToolStripStatusLabel curstate;
-        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripSeparator ToolStripSeparator3;
         private ToolStripButton magicPencil;
         private ToolStripDropDownButton LineWidth;
         private ToolStripMenuItem SlimWidth;

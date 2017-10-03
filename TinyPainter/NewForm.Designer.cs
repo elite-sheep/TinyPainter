@@ -1,6 +1,6 @@
 ﻿namespace TinyPainter
 {
-    partial class NewForm
+    partial class Size
     {
         /// <summary>
         /// Required designer variable.
@@ -39,41 +39,41 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(77, 45);
+            this.label1.Location = new System.Drawing.Point(77, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 12);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Width";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(77, 73);
+            this.label2.Location = new System.Drawing.Point(77, 79);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Height";
             // 
             // WidthBox
             // 
-            this.WidthBox.Location = new System.Drawing.Point(128, 45);
+            this.WidthBox.Location = new System.Drawing.Point(128, 49);
             this.WidthBox.Name = "WidthBox";
-            this.WidthBox.Size = new System.Drawing.Size(100, 21);
+            this.WidthBox.Size = new System.Drawing.Size(100, 20);
             this.WidthBox.TabIndex = 2;
             // 
             // HeightBox
             // 
-            this.HeightBox.Location = new System.Drawing.Point(128, 73);
+            this.HeightBox.Location = new System.Drawing.Point(128, 79);
             this.HeightBox.Name = "HeightBox";
-            this.HeightBox.Size = new System.Drawing.Size(100, 21);
+            this.HeightBox.Size = new System.Drawing.Size(100, 20);
             this.HeightBox.TabIndex = 3;
             // 
             // OkButton
             // 
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(161, 124);
+            this.OkButton.Location = new System.Drawing.Point(161, 134);
             this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(66, 23);
+            this.OkButton.Size = new System.Drawing.Size(66, 25);
             this.OkButton.TabIndex = 4;
             this.OkButton.Text = "OK";
             this.OkButton.UseVisualStyleBackColor = true;
@@ -82,26 +82,26 @@
             // CencelButton
             // 
             this.CencelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CencelButton.Location = new System.Drawing.Point(255, 124);
+            this.CencelButton.Location = new System.Drawing.Point(255, 134);
             this.CencelButton.Name = "CencelButton";
-            this.CencelButton.Size = new System.Drawing.Size(75, 23);
+            this.CencelButton.Size = new System.Drawing.Size(75, 25);
             this.CencelButton.TabIndex = 5;
             this.CencelButton.Text = "Cancel";
             this.CencelButton.UseVisualStyleBackColor = true;
             // 
-            // NewForm
+            // Size
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(352, 159);
+            this.ClientSize = new System.Drawing.Size(352, 172);
             this.Controls.Add(this.CencelButton);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.HeightBox);
             this.Controls.Add(this.WidthBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "NewForm";
-            this.Text = "New";
+            this.Name = "Size";
+            this.Text = "Size";
             this.ResumeLayout(false);
             this.PerformLayout();
 

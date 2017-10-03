@@ -2,16 +2,14 @@
 using System.Windows.Forms;
 using System.Drawing.Imaging;
 using System.Drawing;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Text;
-using System.Windows.Forms;
 using System.IO;
-using System.Drawing.Imaging;
+using TinyPainter.Tools;
+using TinyPainter.Algorithm;
 
 namespace TinyPainter
 {
@@ -22,7 +20,7 @@ namespace TinyPainter
 
         protected ToolStripItem curbutton;
         protected bool isSaved;
-        Tools curTools;
+        ITools curITools;
         PaintSettings cursettings;
 
         //operatormap is used to store the runtime image
@@ -47,7 +45,7 @@ namespace TinyPainter
             cursettings = new PaintSettings();
             operatormap = new ImageFile(initwidth, initheight, Color.White);
             maingraph = operatormap.CloneImage();
-            curTools = new ArrowTool(cursettings,operatormap,operatebox);
+            curITools = new ArrowTool(cursettings,operatormap,operatebox);
             curbutton = Arrow;
             curstate.Image = curbutton.Image;
             colors.BackColor = Color.Black;
@@ -56,81 +54,81 @@ namespace TinyPainter
         protected void update()
         { 
             this.isSaved = false;
-            curTools.updateMaingraph();
+            curITools.updateMaingraph();
         }
 
         public void Arrow_Clicked(object sender, EventArgs e)
         {
             update();
-            curTools.UnloadTool();
-            curTools = new ArrowTool(cursettings, operatormap, operatebox);
+            curITools.UnloadTool();
+            curITools = new ArrowTool(cursettings, operatormap, operatebox);
         }
 
         public void Pencil_Clicked(object sender, EventArgs e)
         {
             update();
-            curTools.UnloadTool();
-            curTools = new PencilTool(cursettings, operatormap, operatebox);
+            curITools.UnloadTool();
+            curITools = new PencilTool(cursettings, operatormap, operatebox);
         }
 
         public void Eraser_Clicked(object sender, EventArgs e)
         {
             update();
-            curTools.UnloadTool();
-            curTools = new EraseTool(cursettings, operatormap, operatebox);
+            curITools.UnloadTool();
+            curITools = new EraseTool(cursettings, operatormap, operatebox);
         }
 
         public void MagicPencil_Clicked(object sender, EventArgs e)
         {
             update();
-            curTools.UnloadTool();
-            curTools = new MagicPencilTool(cursettings, operatormap, operatebox);
+            curITools.UnloadTool();
+            curITools = new MagicPencilTool(cursettings, operatormap, operatebox);
         }
 
         public void Fill_Clicked(object sender, EventArgs e)
         {
             update();
-            curTools.UnloadTool();
-            curTools = new FillTool(cursettings, operatormap, operatebox);
+            curITools.UnloadTool();
+            curITools = new FillTool(cursettings, operatormap, operatebox);
         }
 
         public void Line_Clicked(object sender, EventArgs e)
         {
             update();
-            curTools.UnloadTool();
-            curTools = new LineTool(cursettings, operatormap, operatebox);
+            curITools.UnloadTool();
+            curITools = new LineTool(cursettings, operatormap, operatebox);
         }
 
         public void Eclipse_Clicked(object sender, EventArgs e)
         {
             update();
-            curTools.UnloadTool();
-            curTools = new EclipseTool(cursettings, operatormap, operatebox);
+            curITools.UnloadTool();
+            curITools = new EclipseTool(cursettings, operatormap, operatebox);
         }
 
         public void Rectangle_Clicked(object sender, EventArgs e)
         {
             update();
-            curTools.UnloadTool();
-            curTools = new RectangleTool(cursettings, operatormap, operatebox);
+            curITools.UnloadTool();
+            curITools = new RectangleTool(cursettings, operatormap, operatebox);
         }
 
         public void Text_Clicked(object sender, EventArgs e)
         {
             update();
-            curTools.UnloadTool();
-            curTools = new TextTool(cursettings, operatormap, operatebox);
+            curITools.UnloadTool();
+            curITools = new TextTool(cursettings, operatormap, operatebox);
         }
 
-        public void color_Clicked(object sender, EventArgs e)
+        public void Color_Clicked(object sender, EventArgs e)
         {
-            changecolor();
+            Changecolor();
         }
 
         /// <summary>
         /// change current primary color
         /// </summary>
-        protected void changecolor()
+        protected void Changecolor()
         {
             ColorDialog colornavigator = new ColorDialog();
             if(colornavigator.ShowDialog() == DialogResult.OK)
@@ -154,7 +152,7 @@ namespace TinyPainter
 
         protected void new_pic(object sender, EventArgs e)
         {
-            NewForm newtab = new NewForm();
+            Size newtab = new Size();
             if(newtab.ShowDialog() == DialogResult.OK)
             {
                 int newwidth = newtab.widthres;
@@ -182,13 +180,13 @@ namespace TinyPainter
             {
                 MessageBox.Show(FileNavigator.ToString());
 
-                if (operatormap.open(FileNavigator.FileName))
+                if (operatormap.Open(FileNavigator.FileName))
                 {
                     ShowImage();
                 }
                 else
                 {
-                    MessageBox.Show("Load Image Error!!!");
+                    MessageBox.Show("Load Image Error(pleace check your file)");
                 }
             }
             return;
@@ -203,7 +201,7 @@ namespace TinyPainter
         {
             if(isSaved == false)
             {
-                curTools.updateMaingraph();
+                curITools.updateMaingraph();
                 maingraph = operatormap.CloneImage();
                 isSaved = true;
             }
@@ -213,7 +211,7 @@ namespace TinyPainter
         {
             if (isSaved == false)
             {
-                curTools.updateMaingraph();
+                curITools.updateMaingraph();
                 maingraph = operatormap.CloneImage();
                 isSaved = true;
             }
@@ -222,7 +220,7 @@ namespace TinyPainter
             saveDlg.Filter = "Bitmap (*.BMP)|*.BMP";
             if (saveDlg.ShowDialog() == DialogResult.OK)
             {
-                if (!maingraph.save(saveDlg.FileName))
+                if (!maingraph.Save(saveDlg.FileName))
                     MessageBox.Show("Error");
                 else
                     ShowImage();
@@ -243,7 +241,7 @@ namespace TinyPainter
         protected void paste_pic(object sender, EventArgs e)
         {
             operatormap = clipboard.CloneImage();
-            curTools.flushSwap();
+            curITools.flushSwap();
             operatebox.Invalidate();
         }
 
@@ -251,15 +249,15 @@ namespace TinyPainter
         {
             clipboard = operatormap.CloneImage();
             Graphics.FromImage(operatormap.Bitmap).Clear(Color.White);
-            curTools.flushSwap();
+            curITools.flushSwap();
             this.operatebox.Invalidate();
         }
 
         protected void clear_pic(object sender, EventArgs e)
         {
             this.isSaved = false;
-            Graphics.FromImage(curTools.swapgraphics).Clear(Color.White);
-            curTools.updateMaingraph();
+            Graphics.FromImage(curITools.swapgraphics).Clear(Color.White);
+            curITools.updateMaingraph();
             this.operatebox.Invalidate();
         }
 
@@ -287,7 +285,7 @@ namespace TinyPainter
             string newfile = operatormap.FileName;
             base.Text = string.Format("TinyPainter - [{0}]", newfile == null ? "Untitled" : new FileInfo(newfile).Name);
 
-            curTools.flushSwap();
+            curITools.flushSwap();
 
             operatebox.ClientSize = operatormap.Bitmap.Size;
             operatebox.Invalidate();
@@ -298,12 +296,13 @@ namespace TinyPainter
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void paintOnBox(object sender, PaintEventArgs e)
+        protected void PaintOnBox(object sender, PaintEventArgs e)
         {
             Rectangle rec = e.ClipRectangle;
-            Bitmap tmp = (Bitmap)curTools.swapgraphics.Clone();
-            e.Graphics.DrawImageUnscaledAndClipped(tmp,rec);
-            tmp.Dispose();
+            using (Bitmap tmp = (Bitmap)curITools.swapgraphics.Clone())
+            {
+                e.Graphics.DrawImageUnscaledAndClipped(tmp, rec);
+            }
             return;
         }
 
@@ -372,7 +371,7 @@ namespace TinyPainter
                 this.setLineWidth(newwidth);
             else
             {
-                MessageBox.Show("Invalid Value!!");
+                MessageBox.Show("Invalid Value");
                 WidthBox.Text = cursettings.Width.ToString();
             }
             return;

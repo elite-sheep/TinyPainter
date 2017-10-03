@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TinyPainter
+namespace TinyPainter.Algorithm
 {
     class ImageFile:IDisposable
     {
@@ -61,7 +61,7 @@ namespace TinyPainter
         }
 
         //using this function to open a new file
-        public bool open(string newfileName)
+        public bool Open(string newfileName)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace TinyPainter
         }
 
         //using this function to save our current image file
-        public bool save(string targetfile)
+        public bool Save(string targetfile)
         {
             try
             {

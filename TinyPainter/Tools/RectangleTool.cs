@@ -13,11 +13,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TinyPainter.Algorithm;
 
-namespace TinyPainter
+namespace TinyPainter.Tools
 {
     // The tool for painting rectangle designed by me
-    class RectangleTool: Tools
+    class RectangleTool: ITools
     {
         private bool isDrawing;
         private Pen DrawingPen;

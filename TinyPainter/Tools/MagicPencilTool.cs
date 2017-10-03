@@ -13,10 +13,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TinyPainter.Algorithm;
 
-namespace TinyPainter
+namespace TinyPainter.Tools
 {
-    class MagicPencilTool : Tools
+    class MagicPencilTool : ITools
     {
         protected bool isDrawing;
         protected Pen DrawingPen;

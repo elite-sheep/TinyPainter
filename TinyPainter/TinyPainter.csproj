@@ -91,39 +91,39 @@
     <Compile Include="AboutTinyPainter.Designer.cs">
       <DependentUpon>AboutTinyPainter.cs</DependentUpon>
     </Compile>
-    <Compile Include="ArrowTool.cs" />
-    <Compile Include="EclipseTool.cs" />
-    <Compile Include="EraseTool.cs" />
-    <Compile Include="FillTool.cs" />
-    <Compile Include="ImageFile.cs" />
-    <Compile Include="LineTool.cs" />
-    <Compile Include="MagicPencilTool.cs" />
+    <Compile Include="Tools\ArrowTool.cs" />
+    <Compile Include="Tools\EclipseTool.cs" />
+    <Compile Include="Tools\EraseTool.cs" />
+    <Compile Include="Tools\FillTool.cs" />
+    <Compile Include="Algorithm\ImageFile.cs" />
+    <Compile Include="Tools\LineTool.cs" />
+    <Compile Include="Tools\MagicPencilTool.cs" />
     <Compile Include="mainPainter.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="mainPainter.Designer.cs">
       <DependentUpon>mainPainter.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewForm.cs">
+    <Compile Include="SizeForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NewForm.Designer.cs">
-      <DependentUpon>NewForm.cs</DependentUpon>
+      <DependentUpon>SizeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PaintSettings.cs" />
-    <Compile Include="PencilTool.cs" />
+    <Compile Include="Algorithm\PaintSettings.cs" />
+    <Compile Include="Tools\PencilTool.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RectangleTool.cs" />
-    <Compile Include="Stack.cs" />
+    <Compile Include="Tools\RectangleTool.cs" />
+    <Compile Include="Algorithm\Stack.cs" />
     <Compile Include="TextDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TextDialog.Designer.cs">
       <DependentUpon>TextDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="TextTool.cs" />
-    <Compile Include="Tools.cs" />
+    <Compile Include="Tools\TextTool.cs" />
+    <Compile Include="Tools\ITools.cs" />
     <EmbeddedResource Include="AboutTinyPainter.resx">
       <DependentUpon>AboutTinyPainter.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,7 +131,7 @@
       <DependentUpon>mainPainter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewForm.resx">
-      <DependentUpon>NewForm.cs</DependentUpon>
+      <DependentUpon>SizeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

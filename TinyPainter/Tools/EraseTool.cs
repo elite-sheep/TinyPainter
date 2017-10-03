@@ -1,5 +1,5 @@
 ﻿//==============================================================
-//  Create by Yuchen Wang at 5/23/2017 10:06:00 PM.
+//  Create by Yuchen Wang at 5/23/2017 10:30:49 PM.
 //  Version 1.0
 //  Yuchen Wang [mail: wyc8094@gmail.com]
 //==============================================================
@@ -13,20 +13,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TinyPainter.Algorithm;
 
-namespace TinyPainter
+namespace TinyPainter.Tools
 {
-    class PencilTool:Tools
+    class EraseTool : ITools
     {
         protected bool isDrawing;
         protected Pen DrawingPen;
         protected Point curPoint;
 
-        public PencilTool(PaintSettings settings, ImageFile newfile, PictureBox mainpic)
-            :base(settings, newfile, mainpic)
+        public EraseTool(PaintSettings settings, ImageFile newfile, PictureBox mainpic)
+            : base(settings, newfile, mainpic)
         {
             this.isDrawing = false;
-            this.g = Graphics.FromImage(swapgraphics);
         }
 
         public override void MouseUp(object sender, MouseEventArgs e)
@@ -46,7 +46,7 @@ namespace TinyPainter
             if (e.Button == MouseButtons.Left)
             {
                 this.isDrawing = true;
-                this.DrawingPen = new Pen(settings.PrimaryColor, settings.Width);
+                this.DrawingPen = new Pen(Color.White, settings.Width);
                 this.curPoint = new Point(e.Location.X, e.Location.Y);
             }
 
@@ -59,10 +59,13 @@ namespace TinyPainter
                 this.startPoint = this.curPoint;
                 this.curPoint = new Point(e.Location.X, e.Location.Y);
 
-                g.DrawLine(DrawingPen, startPoint, curPoint);
-                this.operatorBox.Invalidate();
-
+                using (g = Graphics.FromImage(swapgraphics))
+                {
+                    g.DrawLine(DrawingPen, startPoint, curPoint);
+                    this.operatorBox.Invalidate();
+                }
             }
         }
     }
 }
+

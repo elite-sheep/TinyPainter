@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TinyPainter
 {
-    public partial class NewForm : Form
+    public partial class Size : Form
     {
-        public NewForm()
+        public Size()
         {
             InitializeComponent();
             InitOther();

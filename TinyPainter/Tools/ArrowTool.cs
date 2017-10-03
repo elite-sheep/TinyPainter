@@ -12,10 +12,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using TinyPainter.Algorithm;
 
-namespace TinyPainter
+namespace TinyPainter.Tools
 {
-    class ArrowTool:Tools
+    class ArrowTool:ITools
     {
         public ArrowTool(PaintSettings setting, ImageFile map, PictureBox mainbox)
             :base(setting,map,mainbox)

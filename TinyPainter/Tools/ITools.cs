@@ -12,11 +12,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TinyPainter.Algorithm;
 
-namespace TinyPainter
+namespace TinyPainter.Tools
 {
-    // this object is used to standard other object painting tools
-    abstract class Tools: IDisposable
+    // this object is used to standard other object painting ITools
+    abstract class ITools: IDisposable
     {
         protected PaintSettings settings;
         public ImageFile maingraphics;
@@ -26,7 +27,7 @@ namespace TinyPainter
         protected Point startPoint;
         private bool disposed = false;
 
-        public Tools(PaintSettings setting, ImageFile graphFile, PictureBox newbox)
+        public ITools(PaintSettings setting, ImageFile graphFile, PictureBox newbox)
         {
             this.settings = setting;
             this.maingraphics = graphFile;
@@ -50,20 +51,21 @@ namespace TinyPainter
 
         public virtual void UnloadTool()
         {
-            // unload the tools and event handlers
+            // unload the ITools and event handlers
             operatorBox.Cursor = Cursors.Arrow;
             operatorBox.MouseDown -= new MouseEventHandler(MouseDown);
             operatorBox.MouseMove -= new MouseEventHandler(MouseMove);
             operatorBox.MouseUp -= new MouseEventHandler(MouseUp);
 
-            // Destroy our paint tools.
-            if(g != null)
+            // Destroy our paint ITools.
+            if (g != null)
+            {
                 g.Dispose();
-
-            this.maingraphics = null;
-            this.swapgraphics = null;
-            this.operatorBox = null;
-
+            }
+            if(this.swapgraphics != null)
+            {
+                this.swapgraphics.Dispose();
+            }
             return;
         }
 
@@ -101,14 +103,8 @@ namespace TinyPainter
             {
                 swapgraphics.Dispose();
             }
-            if (operatorBox != null)
-            {
-                operatorBox.Dispose();
-            }
-            if (this.maingraphics != null)
-            {
-                this.maingraphics.Dispose();
-            }
+            operatorBox = null;
+            maingraphics = null;
             disposed = true;
         }
 
@@ -118,7 +114,7 @@ namespace TinyPainter
             GC.SuppressFinalize(this);
         }
 
-        ~Tools()
+        ~ITools()
         {
             Dispose(false);
         }

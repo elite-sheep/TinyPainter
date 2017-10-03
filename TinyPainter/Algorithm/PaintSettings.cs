@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TinyPainter
+namespace TinyPainter.Algorithm
 {
     // the setting of paintings, this class is used to control
     // the color and line width of objects we paint

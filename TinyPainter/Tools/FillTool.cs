@@ -9,15 +9,15 @@ using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TinyPainter.Algorithm;
 
-namespace TinyPainter
+namespace TinyPainter.Tools
 {
-    class FillTool:Tools
+    class FillTool:ITools
     {
         protected bool isDrawing;
         protected bool[,] isVisited;
