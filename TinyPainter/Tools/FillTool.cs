@@ -29,14 +29,14 @@ namespace TinyPainter.Tools
         {
             tongji = 0;
             this.isDrawing = false;
-            isVisited = new bool[maingraphics.Bitmap.Width,maingraphics.Bitmap.Height];
+            isVisited = new bool[swapImage.Bitmap.Width,swapImage.Bitmap.Height];
             FlushVis();
         }
 
         public void FlushVis()
         {
-            for (int i = 0; i < maingraphics.Bitmap.Width; i++)
-                for (int j = 0; j < maingraphics.Bitmap.Height; j++)
+            for (int i = 0; i < swapImage.Bitmap.Width; i++)
+                for (int j = 0; j < swapImage.Bitmap.Height; j++)
                     isVisited[i, j] = false;
         }
 
@@ -55,7 +55,7 @@ namespace TinyPainter.Tools
         {
             if (this.isDrawing)
             {
-                oldColor = maingraphics.Bitmap.GetPixel(startPoint.X, startPoint.Y);
+                oldColor = swapImage.Bitmap.GetPixel(startPoint.X, startPoint.Y);
                 FloodFill(startPoint);
                 operatorBox.Invalidate();
                 this.isDrawing = false;
@@ -77,10 +77,10 @@ namespace TinyPainter.Tools
             int x = cur.X;
             int y = cur.Y;
 
-            if (x < 0 || y < 0 || x >= maingraphics.Bitmap.Width || y >= maingraphics.Bitmap.Height)
+            if (x < 0 || y < 0 || x >= swapImage.Bitmap.Width || y >= swapImage.Bitmap.Height)
                 return false;
             else if (this.isVisited[x, y]) return false;
-            else if (Comp(oldColor, maingraphics.Bitmap.GetPixel(x,y)))
+            else if (Comp(oldColor, swapImage.Bitmap.GetPixel(x,y)))
                 return false;
             
             return true;
@@ -96,7 +96,7 @@ namespace TinyPainter.Tools
             {
                 S.Pop(ref curPoint);
                 if (!isPaintable(curPoint)) continue;
-                maingraphics.Bitmap.SetPixel(curPoint.X, curPoint.Y, settings.PrimaryColor);
+                swapImage.Bitmap.SetPixel(curPoint.X, curPoint.Y, settings.PrimaryColor);
 
                 S.Push(new Point(curPoint.X + 1, curPoint.Y));
                 S.Push(new Point(curPoint.X, curPoint.Y + 1));

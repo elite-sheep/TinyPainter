@@ -295,7 +295,7 @@ namespace TinyPainter
         /// <param name="e"></param>
         protected void PaintOnBox(object sender, PaintEventArgs e)
         {
-            cursettings.g.DrawImage(curITools.maingraphics.Bitmap, 0, 0);
+            cursettings.g.DrawImage(curITools.swapImage.Bitmap, 0, 0);
             return;
         }
 

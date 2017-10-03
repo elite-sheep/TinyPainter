@@ -20,7 +20,7 @@ namespace TinyPainter.Tools
     abstract class ITools
     {
         protected PaintSettings settings;
-        public ImageFile maingraphics;
+        public ImageFile swapImage;
         public Graphics swapgraphics;
         protected PictureBox operatorBox;
         protected Graphics g;
@@ -29,9 +29,9 @@ namespace TinyPainter.Tools
         public ITools(PaintSettings setting, ImageFile graphFile, PictureBox newbox)
         {
             this.settings = setting;
-            this.maingraphics = graphFile;
+            this.swapImage = graphFile;
             this.operatorBox = newbox;
-            this.swapgraphics = Graphics.FromImage(maingraphics.Bitmap);
+            this.swapgraphics = Graphics.FromImage(swapImage.Bitmap);
             this.startPoint = new Point();
 
             //add these event handlers to the view
@@ -67,12 +67,12 @@ namespace TinyPainter.Tools
 
         public void flushSwap()
         {
-            g.DrawImage(this.maingraphics.Bitmap, 0, 0);
+            g.DrawImage(this.swapImage.Bitmap, 0, 0);
         }
 
         public void updateMaingraph()
         {
-            g.DrawImage(this.maingraphics.Bitmap, 0, 0);
+            g.DrawImage(this.swapImage.Bitmap, 0, 0);
         }
     }
 }

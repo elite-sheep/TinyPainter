@@ -27,7 +27,7 @@ namespace TinyPainter.Tools
             :base(settings, newfile, mainpic)
         {
             this.isDrawing = false;
-            this.swapgraphics = Graphics.FromImage(maingraphics.Bitmap);
+            this.swapgraphics = Graphics.FromImage(swapImage.Bitmap);
         }
 
         public override void MouseUp(object sender, MouseEventArgs e)
