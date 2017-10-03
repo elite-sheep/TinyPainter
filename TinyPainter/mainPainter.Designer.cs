@@ -245,7 +245,7 @@ namespace TinyPainter
             this.operatebox.InitialImage = null;
             this.operatebox.Location = new System.Drawing.Point(0, 50);
             this.operatebox.Name = "operatebox";
-            this.operatebox.Size = new System.Drawing.Size(380, 240);
+            this.operatebox.Size = new System.Drawing.Size(initwidth, initheight);
             this.operatebox.TabIndex = 3;
             this.operatebox.TabStop = false;
             this.operatebox.Paint += new System.Windows.Forms.PaintEventHandler(this.PaintOnBox);

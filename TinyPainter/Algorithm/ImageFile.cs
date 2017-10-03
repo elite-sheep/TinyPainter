@@ -46,6 +46,10 @@ namespace TinyPainter.Algorithm
             {
                 return this.filename;
             }
+            set
+            {
+                this.filename = value;
+            }
         }
 
         public Bitmap Bitmap

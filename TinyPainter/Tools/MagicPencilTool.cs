@@ -32,7 +32,6 @@ namespace TinyPainter.Tools
             Random randomInt = new Random();
             this.isDrawing = false;
             this.is_dec = false;
-            this.g = Graphics.FromImage(swapgraphics);
             this.FirstColor = Color.FromArgb(randomInt.Next(0xff), randomInt.Next(0xff), randomInt.Next(0xff));
         }
 
@@ -42,9 +41,6 @@ namespace TinyPainter.Tools
             {
                 isDrawing = false;
                 this.updateMaingraph();
-                this.operatorBox.Invalidate();
-                if (this.DrawingPen != null)
-                    this.DrawingPen.Dispose();
             }
         }
 
@@ -68,7 +64,7 @@ namespace TinyPainter.Tools
                 this.DrawingPen.Color = getNextColor(DrawingPen.Color);
 
                 g.DrawLine(DrawingPen, startPoint, curPoint);
-                this.operatorBox.Invalidate();
+                swapgraphics.DrawLine(DrawingPen, startPoint, curPoint);
 
             }
         }

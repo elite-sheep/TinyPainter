@@ -20,6 +20,7 @@ namespace TinyPainter.Algorithm
     {
         private int width;
         private Color primaryColor;
+        public Graphics g;
 
         public PaintSettings()
         {

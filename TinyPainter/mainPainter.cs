@@ -43,12 +43,14 @@ namespace TinyPainter
             this.isSaved = true;
             this.WidthBox.Text = "5";
             cursettings = new PaintSettings();
+            cursettings.g = operatebox.CreateGraphics();
             operatormap = new ImageFile(initwidth, initheight, Color.White);
             maingraph = operatormap.CloneImage();
             curITools = new ArrowTool(cursettings,operatormap,operatebox);
             curbutton = Arrow;
             curstate.Image = curbutton.Image;
             colors.BackColor = Color.Black;
+            ShowImage();
         }
 
         protected void update()
@@ -201,7 +203,6 @@ namespace TinyPainter
         {
             if(isSaved == false)
             {
-                curITools.updateMaingraph();
                 maingraph = operatormap.CloneImage();
                 isSaved = true;
             }
@@ -211,7 +212,6 @@ namespace TinyPainter
         {
             if (isSaved == false)
             {
-                curITools.updateMaingraph();
                 maingraph = operatormap.CloneImage();
                 isSaved = true;
             }
@@ -223,7 +223,10 @@ namespace TinyPainter
                 if (!maingraph.Save(saveDlg.FileName))
                     MessageBox.Show("Error");
                 else
+                {
+                    operatormap.FileName = saveDlg.FileName;
                     ShowImage();
+                }
             }
         }
 
@@ -241,8 +244,6 @@ namespace TinyPainter
         protected void paste_pic(object sender, EventArgs e)
         {
             operatormap = clipboard.CloneImage();
-            curITools.flushSwap();
-            operatebox.Invalidate();
         }
 
         protected void cut_pic(object sender, EventArgs e)
@@ -256,7 +257,7 @@ namespace TinyPainter
         protected void clear_pic(object sender, EventArgs e)
         {
             this.isSaved = false;
-            Graphics.FromImage(curITools.swapgraphics).Clear(Color.White);
+            curITools.swapgraphics.Clear(Color.White);
             curITools.updateMaingraph();
             this.operatebox.Invalidate();
         }
@@ -284,11 +285,7 @@ namespace TinyPainter
         {
             string newfile = operatormap.FileName;
             base.Text = string.Format("TinyPainter - [{0}]", newfile == null ? "Untitled" : new FileInfo(newfile).Name);
-
-            curITools.flushSwap();
-
             operatebox.ClientSize = operatormap.Bitmap.Size;
-            operatebox.Invalidate();
         }
 
         /// <summary>
@@ -298,11 +295,7 @@ namespace TinyPainter
         /// <param name="e"></param>
         protected void PaintOnBox(object sender, PaintEventArgs e)
         {
-            Rectangle rec = e.ClipRectangle;
-            using (Bitmap tmp = (Bitmap)curITools.swapgraphics.Clone())
-            {
-                e.Graphics.DrawImageUnscaledAndClipped(tmp, rec);
-            }
+            cursettings.g.DrawImage(curITools.maingraphics.Bitmap, 0, 0);
             return;
         }
 

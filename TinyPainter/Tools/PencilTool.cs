@@ -27,7 +27,7 @@ namespace TinyPainter.Tools
             :base(settings, newfile, mainpic)
         {
             this.isDrawing = false;
-            this.g = Graphics.FromImage(swapgraphics);
+            this.swapgraphics = Graphics.FromImage(maingraphics.Bitmap);
         }
 
         public override void MouseUp(object sender, MouseEventArgs e)
@@ -36,9 +36,6 @@ namespace TinyPainter.Tools
             {
                 isDrawing = false;
                 this.updateMaingraph();
-                this.operatorBox.Invalidate();
-                if (this.DrawingPen != null)
-                    this.DrawingPen.Dispose();
             }
         }
 
@@ -60,8 +57,8 @@ namespace TinyPainter.Tools
                 this.startPoint = this.curPoint;
                 this.curPoint = new Point(e.Location.X, e.Location.Y);
 
+                swapgraphics.DrawLine(DrawingPen, startPoint, curPoint);
                 g.DrawLine(DrawingPen, startPoint, curPoint);
-                this.operatorBox.Invalidate();
             }
         }
     }

@@ -17,22 +17,21 @@ using TinyPainter.Algorithm;
 namespace TinyPainter.Tools
 {
     // this object is used to standard other object painting ITools
-    abstract class ITools: IDisposable
+    abstract class ITools
     {
         protected PaintSettings settings;
         public ImageFile maingraphics;
-        public Bitmap swapgraphics;
+        public Graphics swapgraphics;
         protected PictureBox operatorBox;
         protected Graphics g;
         protected Point startPoint;
-        private bool disposed = false;
 
         public ITools(PaintSettings setting, ImageFile graphFile, PictureBox newbox)
         {
             this.settings = setting;
             this.maingraphics = graphFile;
             this.operatorBox = newbox;
-            this.swapgraphics = (Bitmap)maingraphics.Bitmap.Clone();
+            this.swapgraphics = Graphics.FromImage(maingraphics.Bitmap);
             this.startPoint = new Point();
 
             //add these event handlers to the view
@@ -40,6 +39,7 @@ namespace TinyPainter.Tools
             operatorBox.MouseDown += new MouseEventHandler(MouseDown);
             operatorBox.MouseMove += new MouseEventHandler(MouseMove);
             operatorBox.MouseUp += new MouseEventHandler(MouseUp);
+            this.g = setting.g;
 
 
             return;
@@ -56,16 +56,6 @@ namespace TinyPainter.Tools
             operatorBox.MouseDown -= new MouseEventHandler(MouseDown);
             operatorBox.MouseMove -= new MouseEventHandler(MouseMove);
             operatorBox.MouseUp -= new MouseEventHandler(MouseUp);
-
-            // Destroy our paint ITools.
-            if (g != null)
-            {
-                g.Dispose();
-            }
-            if(this.swapgraphics != null)
-            {
-                this.swapgraphics.Dispose();
-            }
             return;
         }
 
@@ -77,46 +67,12 @@ namespace TinyPainter.Tools
 
         public void flushSwap()
         {
-            if(swapgraphics != null)
-                swapgraphics.Dispose();
-            swapgraphics = (Bitmap)maingraphics.Bitmap.Clone();
+            g.DrawImage(this.maingraphics.Bitmap, 0, 0);
         }
 
         public void updateMaingraph()
         {
-            maingraphics.Bitmap = (Bitmap)swapgraphics.Clone();
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposed) return;
-
-            if (disposing)
-            {
-            }
-
-            if (g != null)
-            {
-                g.Dispose();
-            }
-            if (swapgraphics != null)
-            {
-                swapgraphics.Dispose();
-            }
-            operatorBox = null;
-            maingraphics = null;
-            disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        ~ITools()
-        {
-            Dispose(false);
+            g.DrawImage(this.maingraphics.Bitmap, 0, 0);
         }
     }
 }

@@ -38,7 +38,6 @@ namespace TinyPainter.Tools
                 isDrawing = true;
                 DrawingPen = new Pen(settings.PrimaryColor, (float)settings.Width);
                 startPoint = new Point(e.Location.X, e.Location.Y);
-                g = Graphics.FromImage(this.swapgraphics);
             }
             return;
         }
@@ -47,15 +46,8 @@ namespace TinyPainter.Tools
         {
             if (isDrawing)
             {
-                this.operatorBox.Invalidate();
+                swapgraphics.DrawEllipse(DrawingPen, getRectangle(endPoint));
                 this.updateMaingraph();
-
-                if (g != null)
-                    g.Dispose();
-
-                if (DrawingPen != null)
-                    DrawingPen.Dispose();
-
                 this.isDrawing = false;
             }
             return;
@@ -68,12 +60,7 @@ namespace TinyPainter.Tools
                 //update information of current image
                 endPoint = new Point(e.Location.X, e.Location.Y);
                 flushSwap();
-
-                using (g = Graphics.FromImage(this.swapgraphics))
-                {
-                    g.DrawEllipse(DrawingPen, getRectangle(endPoint));
-                    this.operatorBox.Invalidate();
-                }
+                g.DrawEllipse(DrawingPen, getRectangle(endPoint));
             }
             return;
         }

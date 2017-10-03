@@ -40,7 +40,6 @@ namespace TinyPainter.Tools
                 isDrawing = true;
                 DrawingPen = new Pen(settings.PrimaryColor, settings.Width);
                 startPoint = new Point(e.Location.X, e.Location.Y);
-                g = Graphics.FromImage(this.swapgraphics);
             }
             return;
         }
@@ -49,17 +48,9 @@ namespace TinyPainter.Tools
         {
             if (isDrawing)
             {
-                this.operatorBox.Invalidate();
-                // save the objects we have drawn
+                swapgraphics.DrawLine(DrawingPen, startPoint, endPoint);
                 updateMaingraph();
-
                 isDrawing = false;
-
-                if (DrawingPen != null)
-                    DrawingPen.Dispose();
-
-                if (g != null)
-                    g.Dispose();
             }
             return;
         }
@@ -73,11 +64,7 @@ namespace TinyPainter.Tools
                 endPoint = new Point(e.Location.X, e.Location.Y);
                 flushSwap();
 
-                using (g = Graphics.FromImage(swapgraphics))
-                {
-                    g.DrawLine(DrawingPen, startPoint, endPoint);
-                    this.operatorBox.Invalidate();
-                }
+                g.DrawLine(DrawingPen, startPoint, endPoint);
             }
             return;
         }

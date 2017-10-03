@@ -50,10 +50,9 @@ namespace TinyPainter.Tools
 
             if(newdig.ShowDialog() == DialogResult.OK)
             {
-                this.g = Graphics.FromImage(swapgraphics);
                 String paintstr = newdig.Texts;
+                swapgraphics.DrawString(paintstr, newdig.curFont, DrawingBrush, startPoint);
                 g.DrawString(paintstr, newdig.curFont,DrawingBrush, startPoint);
-                operatorBox.Invalidate();
                 updateMaingraph();
             }
             return;

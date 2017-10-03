@@ -34,10 +34,8 @@ namespace TinyPainter.Tools
             if (isDrawing)
             {
                 isDrawing = false;
+                swapgraphics.DrawLine(DrawingPen, startPoint, curPoint);
                 this.updateMaingraph();
-                this.operatorBox.Invalidate();
-                if (this.DrawingPen != null)
-                    this.DrawingPen.Dispose();
             }
         }
 
@@ -59,11 +57,8 @@ namespace TinyPainter.Tools
                 this.startPoint = this.curPoint;
                 this.curPoint = new Point(e.Location.X, e.Location.Y);
 
-                using (g = Graphics.FromImage(swapgraphics))
-                {
-                    g.DrawLine(DrawingPen, startPoint, curPoint);
-                    this.operatorBox.Invalidate();
-                }
+                g.DrawLine(DrawingPen, startPoint, curPoint);
+                swapgraphics.DrawLine(DrawingPen, startPoint, curPoint);
             }
         }
     }

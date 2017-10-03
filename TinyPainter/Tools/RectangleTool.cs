@@ -41,7 +41,6 @@ namespace TinyPainter.Tools
                 isDrawing = true;
                 DrawingPen = new Pen(settings.PrimaryColor, settings.Width);
                 startPoint = new Point(e.Location.X, e.Location.Y);
-                g = Graphics.FromImage(this.swapgraphics);
             }
             return;
         }
@@ -49,18 +48,10 @@ namespace TinyPainter.Tools
         public override void MouseUp(object sender, MouseEventArgs e)
         {
             if (isDrawing)
-            { 
-                this.operatorBox.Invalidate();
-                // save the objects we have drawn
+            {
+                swapgraphics.DrawRectangle(DrawingPen, getRectangle(endPoint));
                 updateMaingraph();
-
                 isDrawing = false;
-
-                if(DrawingPen != null)
-                    DrawingPen.Dispose();
-
-                if (g != null)
-                    g.Dispose();
             }
             return;
         }
@@ -73,12 +64,7 @@ namespace TinyPainter.Tools
                 //update the information of current map and flush swap image
                 endPoint = new Point(e.Location.X, e.Location.Y);
                 flushSwap();
-
-                using (g = Graphics.FromImage(swapgraphics))
-                {
-                    g.DrawRectangle(DrawingPen, getRectangle(endPoint));
-                    this.operatorBox.Invalidate();
-                }
+                g.DrawRectangle(DrawingPen, getRectangle(endPoint));
             }
             return;
         }
